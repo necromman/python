@@ -14,11 +14,14 @@ def trade_spider():
     start = 3
     diffArr = []
     tempArr = []
-    ff = open(cafeId+'.txt', 'r')
-    lines = ff.readlines()
-    for line in lines:
-        diffArr += [line.strip()]
-    ff.close()
+    try:
+        ff = open(cafeId+'.txt', 'r')
+        lines = ff.readlines()
+        for line in lines:
+            diffArr += [line.strip()]
+        ff.close()
+    except:
+        print('파일없음')
     f = open(cafeId+'.txt', 'w')
     while True:
         source_code = requests.get(fixTop+cafeId+fixBot+str(start), allow_redirects=False)

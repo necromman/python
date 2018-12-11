@@ -30,8 +30,9 @@ try:
 
     fofo = driver.find_element_by_xpath('//*[@id="frmList"]/div[1]/div[1]/strong[1]').text
     print(fofo)
+    ac = ActionChains(driver)
 
-    for i in fofo:
+    for i in range(1, 1250):
         elem = driver.find_element_by_xpath('//*[@id="frmList"]/div[2]/table/tbody/tr[1]/td[9]/button')
         elem.click()
         time.sleep(1)
@@ -39,7 +40,15 @@ try:
         elem = driver.find_element_by_xpath('//*[@class="bootstrap-dialog-footer-buttons"]/*[text()="해제"]')
         elem.click()
 
-        time.sleep(7)
+        time.sleep(1)
+
+        
+        ac.reset_actions()
+        ac.send_keys(Keys.F5)
+        ac.perform()
+
+        time.sleep(4)
+
         
 
 except:
